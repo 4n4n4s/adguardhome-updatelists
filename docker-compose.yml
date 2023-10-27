@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  adguardhome-updatelists:
+    container_name: adguardhome-updatelists
+    image: 4n4n4s/adguardhome-updatelists
+    environment:
+      - USERNAME=[YOUR_USERNAME]
+      - PASSWORD=[YOUR_PASSWORD]
+      - ADGUARD_URL=[YOUR_ADGUARD_URL]
+      #- ADLIST_URL=https://v.firebog.net/hosts/lists.php?type=tick
