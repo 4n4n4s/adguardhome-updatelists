@@ -3,7 +3,7 @@ version: "3"
 services:
   adguardhome-updatelists:
     container_name: adguardhome-updatelists
-    image: 4n4n4s/adguardhome-updatelists
+    image: ghcr.io/4n4n4s/adguardhome-updatelists:main
     environment:
       - USERNAME=[YOUR_USERNAME]
       - PASSWORD=[YOUR_PASSWORD]
