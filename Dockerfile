@@ -1,4 +1,4 @@
-FROM python:3.12.1-slim
+FROM python:3.12.2-slim
 
 ENV ADGUARD_URL="https://adguard"
 ENV USERNAME="admin"
