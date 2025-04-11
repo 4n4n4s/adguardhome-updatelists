@@ -47,7 +47,7 @@ class AdGuadHome:
         if response.status_code != 200:
             print(response)
             print(response.text)
-        print(response.json())
+        print(response.text)
 
     def add_url(self, url: str, whitelist: bool()):
         response = self.session.post(
