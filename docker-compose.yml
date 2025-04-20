@@ -1,11 +1,24 @@
-version: "3"
-
 services:
   adguardhome-updatelists:
     container_name: adguardhome-updatelists
-    image: ghcr.io/4n4n4s/adguardhome-updatelists:main
+    image: adguard-local
     environment:
-      - USERNAME=[YOUR_USERNAME]
-      - PASSWORD=[YOUR_PASSWORD]
-      - ADGUARD_URL=[YOUR_ADGUARD_URL]
+      - USERNAME=admin
+      - PASSWORD=adminnimda
+      - ADGUARD_URL=http://adguardhome:80/
       #- ADLIST_URL=https://v.firebog.net/hosts/lists.php?type=tick
+      - INTERVAL_SECONDS=10
+    depends_on:
+      - adguardhome
+
+  adguardhome:
+    container_name: adguardhome
+    image: adguard/adguardhome:latest
+    ports:
+      - "3000:3000" # Admin UI (first config)
+      - "8080:80" # Normal UI
+    environment:
+      TZ: 'Europe/Vienna'
+    volumes:
+      - './local/work:/opt/adguardhome/work'
+      - './local/conf:/opt/adguardhome/conf'

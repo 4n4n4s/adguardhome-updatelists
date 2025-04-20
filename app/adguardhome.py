@@ -49,7 +49,7 @@ class AdGuadHome:
             print(response.text)
         print(response.text)
 
-    def add_url(self, url: str, whitelist: bool()):
+    def add_url(self, url: str, whitelist: bool):
         response = self.session.post(
             f"{self.url}/control/filtering/add_url", 
             json={"url": url, "name": f"{self.name_prefix} {self.url}", "whitelist": whitelist})
