@@ -20,4 +20,3 @@ Checkout the docker-compose.yml file and change the environment parameters so th
 |WHITELIST_URL  | Your allowlist(s), comma separated, that you do not want to block. | https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt |
 |ADLIST_URL  | List of URLs that contain URLs to block| https://v.firebog.net/hosts/lists.php?type=tick | https://v.firebog.net/hosts/lists.php?type=tick |
 |INTERVAL_SECONDS  | 86400 | 86400 (seconds = 1 day) |
-

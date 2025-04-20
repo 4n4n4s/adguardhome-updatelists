@@ -1,7 +1,7 @@
 services:
   adguardhome-updatelists:
     container_name: adguardhome-updatelists
-    image: adguard-local
+    image: ghcr.io/4n4n4s/adguardhome-updatelists:main
     environment:
       - USERNAME=admin
       - PASSWORD=adminnimda
@@ -18,7 +18,7 @@ services:
       - "3000:3000" # Admin UI (first config)
       - "8080:80" # Normal UI
     environment:
-      TZ: 'Europe/Vienna'
+      - TZ=Europe/Vienna
     volumes:
       - './local/work:/opt/adguardhome/work'
       - './local/conf:/opt/adguardhome/conf'
