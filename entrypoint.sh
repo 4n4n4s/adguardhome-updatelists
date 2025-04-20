@@ -11,7 +11,10 @@ fi
 if [ -z "$PASSWORD" ]; then
     PASSWORD="admin"
 fi
-sleep 5
+
+echo "Starting in 30 seconds..."
+sleep 30
+
 while true; do
     echo "Starting task"
     python3 main.py --adguard_url $ADGUARD_URL --username $USERNAME --password $PASSWORD --adlist_url $ADLIST_URL
