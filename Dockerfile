@@ -5,7 +5,7 @@ ENV USERNAME="admin"
 ENV PASSWORD=""
 ENV ADLIST_URL="https://v.firebog.net/hosts/lists.php?type=tick"
 
-RUN apt-get update && apt-get install -y cron
+RUN apt-get update && apt-get install -y cron curl dnsutils
 
 WORKDIR /app
 COPY app/* /app
