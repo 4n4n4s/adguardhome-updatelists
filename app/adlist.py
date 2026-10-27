@@ -9,7 +9,7 @@ class AdList:
     def get_new_filters(self):
         response = requests.get(self.url, timeout=10)
         if response.status_code != 200:
-            print(response)
+            print(f"[AdList] GET {self.url} -> {response.status_code}")
             print(response.text)
 
         adlines = response.text.split("\n")

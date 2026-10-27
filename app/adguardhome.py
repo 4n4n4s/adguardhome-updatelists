@@ -11,11 +11,12 @@ class AdGuadHome:
         self.name_prefix = "[adlist]"
 
     def do_login(self):
+        endpoint = f"{self.url}/control/login"
         response = self.session.post(
-            f"{self.url}/control/login",
+            endpoint,
             json={"name": self.username, "password": self.password})
         if response.status_code != 200:
-            print(response)
+            print(f"[AdGuardHome] POST {endpoint} -> {response.status_code}")
             print(response.text)
             exit(0)
         if not "OK" in response.text:
@@ -23,9 +24,10 @@ class AdGuadHome:
             exit(0)
 
     def get_filters(self, filters: str):
-        response = self.session.get(f"{self.url}/control/filtering/status")
+        endpoint = f"{self.url}/control/filtering/status"
+        response = self.session.get(endpoint)
         if response.status_code != 200:
-            print(response)
+            print(f"[AdGuardHome] GET {endpoint} -> {response.status_code}")
             print(response.text)
         if not filters in response.json():
             print("no filters")
@@ -41,19 +43,19 @@ class AdGuadHome:
         return self.get_filters("filters")
 
     def remove_url(self, url: str, whitelist: bool):
+        endpoint = f"{self.url}/control/filtering/remove_url"
         response = self.session.post(
-            f"{self.url}/control/filtering/remove_url", 
+            endpoint,
             json={"url": url, "whitelist": whitelist})
         if response.status_code != 200:
-            print(response)
-            print(response.text)
+            print(f"[AdGuardHome] POST {endpoint} -> {response.status_code}")
         print(response.text)
 
     def add_url(self, url: str, whitelist: bool):
+        endpoint = f"{self.url}/control/filtering/add_url"
         response = self.session.post(
-            f"{self.url}/control/filtering/add_url", 
+            endpoint,
             json={"url": url, "name": f"{self.name_prefix} {self.url}", "whitelist": whitelist})
         if response.status_code != 200:
-            print(response)
-            print(response.text)
+            print(f"[AdGuardHome] POST {endpoint} -> {response.status_code}")
         print(response.text)
