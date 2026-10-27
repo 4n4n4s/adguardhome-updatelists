@@ -4,7 +4,7 @@ import requests
 class AdGuadHome:
     def __init__(self, url: str, username: str, password: str):
         print("Initialize AdGuardHome", url, username)
-        self.url = url
+        self.url = url.rstrip("/")
         self.username = username
         self.password = password
         self.session = requests.Session()
